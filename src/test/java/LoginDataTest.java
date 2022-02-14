@@ -33,10 +33,11 @@ public class LoginDataTest {
 
     @Test
     public void logintest() {
+
         LoginData login = new LoginData(driver);
         login.inputEmail("mirka.vyno@gmail.com").inputPassword("Test-User123").clickLoginButton();
         String actual = driver.getCurrentUrl();
-        String expected = "https://ita-social-projects.github.io/GreenCityClient/#/ubs/order";
+        String expected = "https://ita-social-projects.github.io/GreenCityClient/#/profile/42";
         Assert.assertEquals(actual, expected);
 
     }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginData {
 
@@ -13,13 +14,14 @@ public class LoginData {
     @FindBy(how = How.XPATH, using = "//a[@class = 'close-modal-window']/img")
     private WebElement close;
 
-    @FindBy(how = How.XPATH, using = "//input[@id = 'email']")
+    @FindBy(how = How.XPATH, using = "//input[@id='email']")
     private WebElement emailField;
     @FindBy(how = How.XPATH, using = "//input[@id = 'password']")
     private WebElement passwordField;
-    @FindBy(how = How.XPATH, using = "//button[@class = 'ubs-primary-global-button']")
+    @FindBy(how = How.XPATH, using = "//button[@class = 'primary-global-button']")
     private WebElement loginButton;
-    @FindBy(how = How.XPATH, using = "//button[@class = 'google-sign-in']")
+
+    @FindBy(how = How.XPATH, using = "//app-submit-button/button[@class = 'ubs-primary-global-button']")
     private WebElement signInGoogle;
     @FindBy(how = How.XPATH, using = "//span[@class = 'show-hide-btn']")
     private WebElement showHidePassword;
@@ -31,8 +33,10 @@ public class LoginData {
     private WebElement errorPassword;
     @FindBy(how = How.XPATH, using = "//div[@class = 'missing-account']/p/a[@class = 'ubs-sign-up-link']")
     private WebElement signUpLink;
+
     public LoginData(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     //("click on 'close' button")
@@ -61,7 +65,7 @@ public class LoginData {
     // click on login button
     public LoginData clickLoginButton () {
         loginButton.click();
-        return this;
+        return new LoginData(driver);
     }
 
     //click on 'show-hide password' button
