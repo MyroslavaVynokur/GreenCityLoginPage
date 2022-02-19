@@ -2,14 +2,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 
 import java.time.Duration;
 
@@ -31,17 +28,17 @@ public class LoginDataTest {
 
     }
 
-    @Test
-    public void logintest() {
 
+
+    @ParameterizedTest
+    @ArgumentsSource(EmailPasswordArgumentsProvider.class)
+    public void logintest(String input) {
         LoginData login = new LoginData(driver);
-        login.inputEmail("mirka.vyno@gmail.com").inputPassword("Test-User123").clickLoginButton();
+        login.inputEmail(input).inputPassword("Test-User123").clickLoginButton();
         String actual = driver.getCurrentUrl();
         String expected = "https://ita-social-projects.github.io/GreenCityClient/#/profile/42";
         Assert.assertEquals(actual, expected);
-
     }
-
 
 //    @After
 //    public void AfterMethod() {

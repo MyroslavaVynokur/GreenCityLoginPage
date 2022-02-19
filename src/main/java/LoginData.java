@@ -1,4 +1,6 @@
 import org.junit.Assert;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -45,9 +47,7 @@ public class LoginData {
         return this;
     }
 
-    //input email | value = {emailInput}
     public LoginData inputEmail(String emailInput) {
-
         emailField.click();
         emailField.clear();
         emailField.sendKeys(emailInput, Keys.ENTER);
