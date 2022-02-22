@@ -20,8 +20,11 @@ public class LoginData {
     private WebElement emailField;
     @FindBy(how = How.XPATH, using = "//input[@id = 'password']")
     private WebElement passwordField;
-    @FindBy(how = How.XPATH, using = "//button[@class = 'primary-global-button']")
+    @FindBy(how = How.XPATH, using = "//app-submit-button/button[@class = 'ubs-primary-global-button']")
     private WebElement loginButton;
+
+    @FindBy(how = How.XPATH, using = "//*[@id='header_user-wrp']/li[1]/a")
+    private WebElement userName;
 
     @FindBy(how = How.XPATH, using = "//app-submit-button/button[@class = 'ubs-primary-global-button']")
     private WebElement signInGoogle;
@@ -65,7 +68,23 @@ public class LoginData {
     // click on login button
     public LoginData clickLoginButton () {
         loginButton.click();
-        return new LoginData(driver);
+     //   return new LoginData(driver);
+        return this;
+    }
+
+    //("check text on User Menu")
+    public String userNameGetText() {
+        return userName.getText();
+    }
+
+    //get text eror Email
+    public String getTextErorEmail() {
+        return errorEmail.getText();
+    }
+
+    //get text eror Password
+    public String getTextErorPassword() {
+        return errorPassword.getText();
     }
 
     //click on 'show-hide password' button
@@ -73,5 +92,7 @@ public class LoginData {
         showHidePassword.click();
         return this;
     }
+
+
 
 }
