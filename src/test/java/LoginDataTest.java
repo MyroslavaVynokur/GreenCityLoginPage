@@ -3,6 +3,7 @@ import jdk.jfr.Description;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -43,7 +44,7 @@ public class LoginDataTest {
 //            String actual = driver.getCurrentUrl();
 //            String expected = "https://ita-social-projects.github.io/GreenCityClient/#/profile/42";
 //            Assert.assertEquals(actual, expected);
-            Assert.assertEquals(true, login.userNameGetText());
+            Assertions.assertTrue(login.userNameIsDisplayed());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

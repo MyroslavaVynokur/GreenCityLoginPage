@@ -68,13 +68,12 @@ public class LoginData {
     // click on login button
     public LoginData clickLoginButton () {
         loginButton.click();
-     //   return new LoginData(driver);
-        return this;
+         return new LoginData(driver);
     }
 
     //("check text on User Menu")
-    public String userNameGetText() {
-        return userName.getText();
+    public boolean userNameIsDisplayed() {
+        return userName.isDisplayed();
     }
 
     //get text eror Email
