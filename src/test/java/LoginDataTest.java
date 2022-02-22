@@ -49,24 +49,24 @@ public class LoginDataTest {
         }
     }
 
-    @Description("test verify id user can NOT login with invalid Email")
-    @ParameterizedTest
-    @ArgumentsSource(IncorrectEmailArgumentsProvider.class)
-    public void incorrectEmailLoginTest(String email, String password) {
-        try {
-            LoginData login = new LoginData(driver);
-
-            String expectedErrorEmailMessage = "Перевірте, чи правильно вказано вашу адресу електронної пошти";
-            String actualErrorEmailMessage = login.getTextErorEmail();
-            login.inputEmail(email).inputPassword(password).clickLoginButton();
-            SoftAssert softAssert = new SoftAssert();
-            softAssert.assertEquals(actualErrorEmailMessage, expectedErrorEmailMessage,
-                    "verify if user can't login with incorrect Email, check error message");
-
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Description("test verify id user can NOT login with invalid Email")
+//    @ParameterizedTest
+//    @ArgumentsSource(IncorrectEmailArgumentsProvider.class)
+//    public void incorrectEmailLoginTest(String email, String password) {
+//        try {
+//            LoginData login = new LoginData(driver);
+//
+//            String expectedErrorEmailMessage = "Перевірте, чи правильно вказано вашу адресу електронної пошти";
+//            String actualErrorEmailMessage = login.getTextErorEmail();
+//            login.inputEmail(email).inputPassword(password).clickLoginButton();
+//            SoftAssert softAssert = new SoftAssert();
+//            softAssert.assertEquals(actualErrorEmailMessage, expectedErrorEmailMessage,
+//                    "verify if user can't login with incorrect Email, check error message");
+//
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//    }
 //
 //    @ParameterizedTest
 //    @ArgumentsSource(IncorrectPasswordArgumentsProvider.class)

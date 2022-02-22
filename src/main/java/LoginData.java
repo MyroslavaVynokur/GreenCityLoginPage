@@ -20,7 +20,7 @@ public class LoginData {
     private WebElement emailField;
     @FindBy(how = How.XPATH, using = "//input[@id = 'password']")
     private WebElement passwordField;
-    @FindBy(how = How.XPATH, using = "//app-submit-button/button[@class = 'ubs-primary-global-button']")
+    @FindBy(how = How.XPATH, using = "//button[@class = 'primary-global-button']")
     private WebElement loginButton;
 
     @FindBy(how = How.XPATH, using = "//*[@id='header_user-wrp']/li[1]/a")
