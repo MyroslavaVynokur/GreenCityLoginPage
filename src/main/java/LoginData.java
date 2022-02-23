@@ -1,10 +1,7 @@
 import org.junit.Assert;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -53,7 +50,7 @@ public class LoginData {
     public LoginData inputEmail(String emailInput) {
         emailField.click();
         emailField.clear();
-        emailField.sendKeys(emailInput, Keys.ENTER);
+        emailField.sendKeys(emailInput, Keys.ARROW_DOWN);
         return this;
     }
 
@@ -61,14 +58,14 @@ public class LoginData {
     public LoginData inputPassword(String passwordInput) {
         passwordField.click();
         passwordField.clear();
-        passwordField.sendKeys(passwordInput, Keys.ENTER);
+        passwordField.sendKeys(passwordInput, Keys.ARROW_DOWN);
         return this;
     }
 
     // click on login button
     public LoginData clickLoginButton () {
         loginButton.click();
-         return new LoginData(driver);
+        return new LoginData(driver);
     }
 
     //("check text on User Menu")
