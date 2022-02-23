@@ -17,6 +17,7 @@ public class LoginData {
     private WebElement emailField;
     @FindBy(how = How.XPATH, using = "//input[@id = 'password']")
     private WebElement passwordField;
+
     @FindBy(how = How.XPATH, using = "//button[@class = 'primary-global-button']")
     private WebElement loginButton;
 
@@ -50,7 +51,7 @@ public class LoginData {
     public LoginData inputEmail(String emailInput) {
         emailField.click();
         emailField.clear();
-        emailField.sendKeys(emailInput, Keys.ARROW_DOWN);
+        emailField.sendKeys(emailInput, Keys.ENTER);
         return this;
     }
 
@@ -58,7 +59,7 @@ public class LoginData {
     public LoginData inputPassword(String passwordInput) {
         passwordField.click();
         passwordField.clear();
-        passwordField.sendKeys(passwordInput, Keys.ARROW_DOWN);
+        passwordField.sendKeys(passwordInput, Keys.ENTER);
         return this;
     }
 

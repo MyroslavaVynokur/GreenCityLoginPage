@@ -22,3 +22,4 @@ public class ValidEmailPasswordArgumentsProvider implements ArgumentsProvider {
  //   String actual = driver.getCurrentUrl();
 //            String expected = "https://ita-social-projects.github.io/GreenCityClient/#/profile/42";
 //            Assert.assertEquals(actual, expected);
+//ElementClickInterceptedException

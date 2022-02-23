@@ -44,16 +44,15 @@ public class LoginDataTest {
     public void successfulLoginTest(String email, String password) throws InterruptedException {
         try {
             LoginData login = new LoginData(driver);
-            WebDriverWait wait = new WebDriverWait(driver,30);
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'primary-global-button']")));
-
             login.inputEmail(email).inputPassword(password);
-            login.clickLoginButton();
 
+            WebDriverWait wait = new WebDriverWait(driver,30);
+            //  wait.until(ExpectedConditions.elementToBeClickable("//button[@class = 'primary-global-button']"));
+            //login.clickLoginButton();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header_user-wrp']/li[1]/a")));
             Assertions.assertTrue(login.userNameIsDisplayed());
 
-        } catch (ElementClickInterceptedException | NullPointerException e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
@@ -64,19 +63,19 @@ public class LoginDataTest {
     public void incorrectEmailLoginTest(String email, String password) {
         try {
             LoginData login = new LoginData(driver);
+
+            login.inputEmail(email).inputPassword(password);
+
             WebDriverWait wait = new WebDriverWait(driver,30);
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'primary-global-button']")));
+//            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class = 'primary-global-button']")));
+            //login.clickLoginButton();
 
             String expectedErrorEmailMessage = "Перевірте, чи правильно вказано вашу адресу електронної пошти";
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id = 'email-err-msg']/app-error/div")));
             String actualErrorEmailMessage = login.getTextErorEmail();
+            Assert.assertEquals(actualErrorEmailMessage, expectedErrorEmailMessage);
 
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='header_user-wrp']/li[1]/a")));
-            login.inputEmail(email).inputPassword(password).clickLoginButton();
-            SoftAssert softAssert = new SoftAssert();
-            softAssert.assertEquals(actualErrorEmailMessage, expectedErrorEmailMessage,
-                    "verify if user can't login with incorrect Email, check error message");
-
-        } catch (ElementClickInterceptedException | NullPointerException e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
